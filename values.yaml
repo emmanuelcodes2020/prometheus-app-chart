@@ -1,0 +1,17 @@
+
+
+prometheusApplicationName: prometheus-app
+
+namespace: tooling
+
+prometheusimage:
+  name: 416591745024.dkr.ecr.eu-west-2.amazonaws.com/personal-demo/prometheus-app
+  tag: "latest"
+
+prometheusservice: prometheus-app-service
+
+serviceingress:  prometheus-ingress-service
+
+prometheusappbaseURL : prometheus.globalfrontierlink.co.uk
+
+

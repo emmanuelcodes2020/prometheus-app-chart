@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.prometheusApplicationName }}
+  namespace: {{ .Values.namespace }} 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.prometheusApplicationName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.prometheusApplicationName }}
+    spec:
+      containers:
+        - name: {{ .Values.prometheusApplicationName }}
+          image:  "{{ .Values.prometheusimage.name }}:{{ .Values.prometheusimage.tag }}"
+          resources:
+            request:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+          ports:
+            - containerPort: 9090
